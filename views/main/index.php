@@ -9,11 +9,23 @@
 <body>
     <?php 
     require "views/header.php";
+    // Podria poner esto en todos los sitios para poder
+    // decir que si eso no existe no podria hacer nada
+    // Como de momento todo esta conectado se deja
+    session_start();
+    if(!isset($_SESSION["email"])){
+        $urlhead= constant("URL")."login";
+        header("Location: $urlhead");
+    }
     ?>
 
 <div id="main">
     <h1 class="center">Bienvenido al sitio</h1>
 </div>
+<a href='<?php
+ $urlhead= constant("URL")."login/Logout";
+ echo $urlhead;
+  ?> ' class="btn btn-outline-success">Logout</a>
     <?php 
     require "views/footer.php";
     ?>

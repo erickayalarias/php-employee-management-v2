@@ -43,5 +43,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-INSERT INTO VALUES
+INSERT INTO admin ("name", "password", "email") VALUES("admin", "$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC","admin@assemblerschool.com")
 

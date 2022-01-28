@@ -10,11 +10,10 @@ class Nuevo extends Controller{
     }
     public function registrarAlumno(){
     //    echo "alumno creado";
-    
        $matricula= $_POST["matricula"];
        $nombre= $_POST["nombre"];
        $apellido= $_POST["apellido"];
-      if($this->model->insert(["matricula"=>$matricula, "nombre"=>$nombre, "apellido"=> $apellido])){
+      if($this->model->insert("pepe")){
          $mensaje="nuevo Alumno creado";
       }else{
           $mensaje="Estos datos ya estan repetidos";

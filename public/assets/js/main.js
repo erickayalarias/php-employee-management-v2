@@ -1,35 +1,26 @@
-const buttons = document.querySelectorAll(".btnDelete");
+prueba= window.location.href
+ //AJAX request
+//  httpRequest("http:///employeev2/php-employee-management-v2/" + contentId, function(){
+//     console.log(this.responseText);
 
-buttons.forEach(button => {
-    button.addEventListener("click", function(){
-        const contentId = this.dataset.content_id;
-        
-        const confirm = window.confirm("Do you want to delete the selected content?");
+//     const tbody = document.querySelector("#tbody-contents");
+//     const row = document.querySelector("#row-" + contentId);
+//     tbody.removeChild(row);
 
-        if(confirm){
-            //AJAX request
-            httpRequest("http://puchu/MVC_Advanced/consult/deleteContent/" + contentId, function(){
-                console.log(this.responseText);
-
-                const tbody = document.querySelector("#tbody-contents");
-                const row = document.querySelector("#row-" + contentId);
-                tbody.removeChild(row);
-
-                document.querySelector("#responseContent").innerHTML = this.responseText;
-            });
-        }
-    });
-});
-
-
-function httpRequest(url, callback){
-    const http = new XMLHttpRequest();
-    http.open("GET", url);
-    http.send();
-
-    http.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            callback.apply(http);
-        }
+//     document.querySelector("#responseContent").innerHTML = this.responseText;
+// });
+$.ajax({
+    type: "POST",
+    url: `${prueba}/getdb`,
+    success: function (data) {
+        console.log(data)
+        // if (data != "") {
+        //     window.location.assign(`./../index.php`)
+        // }
     }
-}
+})
+
+// console.log(window.location.pathname)
+// console.log(window.location.host )
+// console.log(window.location.hostname)
+// console.log(window.location.href)
