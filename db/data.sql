@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `employeev2`.`employees` (
   `email` VARCHAR(45) NULL DEFAULT NULL,
   `gender` VARCHAR(45) NULL DEFAULT NULL,
   `city` VARCHAR(45) NULL DEFAULT NULL,
-  `streetAddress` VARCHAR(90) NULL DEFAULT NULL,
+  `streetAddress` INT(11) NULL DEFAULT NULL,
   `state` VARCHAR(45) NULL DEFAULT NULL,
   `age` INT(11) NULL DEFAULT NULL,
   `postalCode` INT(11) NULL DEFAULT NULL,
@@ -43,5 +43,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
-INSERT INTO admin ("name", "password", "email") VALUES("admin", "$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC","admin@assemblerschool.com")
+INSERT INTO admin (name, password, email) VALUES("admin", "$2y$10$nuh1LEwFt7Q2/wz9/CmTJO91stTBS4cRjiJYBY3sVCARnllI.wzBC","admin@assemblerschool.com")
 
