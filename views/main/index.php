@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload="callGrid();">
+
     <?php 
     require "views/header.php";
     // Podria poner esto en todos los sitios para poder

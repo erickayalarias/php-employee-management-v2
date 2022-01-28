@@ -7,7 +7,7 @@ class mainModel extends Model{
     }
     public function RetDb(){
         try{
-            $query= $this->db -> connect() -> prepare("SELECT * FROM admin;");
+            $query= $this->db -> connect() -> prepare("SELECT * FROM employees;");
              $query ->execute();
              $data= $query->fetchAll();
             return $data;
