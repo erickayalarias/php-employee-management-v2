@@ -6,6 +6,7 @@ class App{
         $url= isset($_GET["url"]) ? $_GET["url"] : NULL;
         $url = rtrim($url, "/");
         $url= explode("/", $url);
+        define("urlPath", $url);
         //cuando se ingresa sin definir controlador
         if(empty($url[0])){
             // Hacer un if si ha iniciado sesion tambien

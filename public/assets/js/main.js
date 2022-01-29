@@ -1,42 +1,51 @@
-prueba= window.location.href
- //AJAX request
-//  httpRequest("http:///employeev2/php-employee-management-v2/" + contentId, function(){
-//     console.log(this.responseText);
-
-//     const tbody = document.querySelector("#tbody-contents");
-//     const row = document.querySelector("#row-" + contentId);
-//     tbody.removeChild(row);
-
-//     document.querySelector("#responseContent").innerHTML = this.responseText;
-// });
+data= window.location.href
+console.log(data)
 // $.ajax({
 //     type: "POST",
-//     url: `${prueba}/getdb`,
+//     url: `${data}/getdb`,
 //     success: function (data) {
-//         console.log(data)
+//         dataEmployee = JSON.parse(data);
 //     }
 // })
+// console.log("pepe")
+// console.log(window.location.pathname)
+// console.log(window.location.host )
+// console.log(window.location.hostname)
+// reading= await $.ajax({
+//     type: "POST",
+//     url: `${data}/getdata`,
+//     success: function (data) {
+//         console.log(data)
+//         let datsa=data 
+//         return datsa
+//         // dataEmployee = JSON.parse(data);
+//     }
+// })
+registerView= data.replace("main", "nuevo")
+// console.log(registerView)
+// console.log(window.location)
+
+
 
 async function callDataEmploee() {
     let result = []
     try {
         result = await $.ajax({
             type: "POST",
-            url: `${prueba}/getdb`,
+            url: `${data}/getdb`,
             success: function (data) {
-                // console.log(data)
-                $dataEmployee = data;
+                dataEmployee = JSON.parse(data);
             }
         })
-        return result;
+        return JSON.parse(result);
     } catch (error) {
         console.error("Don't load the Data");
     }
 };
-// console.log(window.location.pathname)
-// console.log(window.location.host )
-// console.log(window.location.hostname)
-// console.log(window.location.href)
+
+
+
+
 async function callGrid() {
     $("#jsGrid").jsGrid({
         width: "100%",
@@ -78,7 +87,7 @@ async function callGrid() {
                 headerTemplate: () => {
                     return $("<button>").attr("type", "button").attr('class', "fas fa-user-plus")
                         .on("click", function () {
-                            window.location.assign(`./../src/employee.php`)
+                            window.location.assign(`${registerView}`)
                         });
                 }
             },
@@ -98,12 +107,12 @@ async function callGrid() {
 
         },
         onItemDeleted: function(args) {
+            console.log(args.item[0])
             $.ajax({
                 type: "DELETE",
-                url: `.././src/library/employeeController.php?delEmployee=${args.item.id}`,
+                url: `${data}/Delete/${args.item[0]}`,
                 success: function (data) {
                    alert("The user has been deleted");
-                //    callGrid();
                 }
             });
         }
@@ -116,7 +125,7 @@ async function callGrid() {
         //todo event listener to redirect to employee.php with id and charge all data in the form
         rowDoubleClick: function (args) {
             $idget = args["item"].id
-            window.location.assign(`./../src/employee.php?id=${$idget}`)
+            window.location.assign(`${registerView}/checked/${$idget}`)
         },
        
         onItemInserting: function(args) {
@@ -126,8 +135,8 @@ async function callGrid() {
                 alert(`The email: ${args.item.email} is incorrect`);
             }
 
-            $dataEmployee.forEach(element => {
-                if(element.email == args.item.email){  
+            dataEmployee.forEach(element => {
+                if(element.email == args.item.email){ 
                     args.cancel = true;
                     alert("Email already in the database");
                 }
@@ -141,10 +150,38 @@ async function callGrid() {
                 url: ".././src/library/employeeController.php?addEmployee",
                 data: args.item,
                 success: function (data) {
-                    callGrid();
+                    // callGrid();
                 }
             })
         }
     });
 
 };
+
+rr=document.getElementsByClassName("p")
+console.log($("form").serializeArray())
+metiendodatos= $("form").serializeArray()
+
+$( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    //  form= $(this).serializeArray();
+     form= $(this).serializeArray();
+     // data.includes("checked")
+     if(data.includes("checked")){
+         console.log("pepe")
+        nuevaUrl= data.replace("checked", "data")
+         $.ajax({
+             type: "POST",
+             url: `${nuevaUrl}`,
+             data: form,
+             success: function (data) {
+                 console.log(data)
+             //    alert("The user has been deleted");
+             }
+         });
+     }else{
+         console.log("archivonuevo")
+
+     }
+    
+  });

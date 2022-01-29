@@ -10,20 +10,17 @@ class Login extends Controller{
     }
     public function checkLogin(){
         $data= $this->model->check();
-
         if(isset($_POST["email"]) & isset($data)){
             $postEmail= $_POST["email"];
             $postPassword= $_POST["password"];
-
             foreach ($data as $db) {
-                echo $db["email"];
+                // echo $db["email"];
                 if($db["email"]= $_POST["email"]){
                     if(password_verify($_POST["password"],$db["password"] )){
                         //! Entra aqui
                         session_start();
                         $_SESSION["email"] = $postEmail;
                         $_SESSION["password"] = $postPassword;
-                        // $this -> view -> render("main/index");
                         $urlhead= constant("URL")."main";
                         header("Location: $urlhead");
                     }
@@ -51,6 +48,6 @@ class Login extends Controller{
         $urlhead= constant("URL")."login";
         header("Location: $urlhead");
     }
-
+    
 }
 ?> 

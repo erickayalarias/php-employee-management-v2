@@ -16,5 +16,17 @@ class mainModel extends Model{
             return false;
         }
     }
+
+    public function DeletEmployee($id){
+        try{
+            $query= $this->db -> connect() -> prepare("DELETE FROM employees WHERE id=${id};");
+             $query ->execute();
+             $data= $query->fetchAll();
+            return $data;
+        }
+        catch(PDOException $e){
+            return false;
+        }
+    }
 }
 ?>

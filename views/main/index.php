@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <script src=""></script> -->
 </head>
-<body onload="callGrid();">
+<body onload="callGrid()">
 
     <?php 
     require "views/header.php";
@@ -23,6 +24,10 @@
 <div id="main">
     <h1 class="center">Bienvenido al sitio</h1>
 </div>
+<section>
+        <!-- todo main section  -->
+        <div id="jsGrid"> </div>
+    </section>
 <a href='<?php
  $urlhead= constant("URL")."login/Logout";
  echo $urlhead;

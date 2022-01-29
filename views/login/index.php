@@ -20,7 +20,7 @@
                                     <img src="./assets/img/29744343_415615545548920_7222466440612695631_o.png" alt="">
                                     <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                                     <p class="text-white-50 mb-5">Please enter your login and password!</p>
-                                    <form action="<?php echo constant("URL");?>login/checkLogin" method="post">
+                                    <form action="<?php echo constant("URL");?>login/checkLogin" method="POST">
                                         <div class="form-outline form-white mb-4">
                                             <input name="email" type="email" id="typeEmailX" class="form-control form-control-lg" />
                                             <label class="form-label" for="typeEmailX">Email</label>

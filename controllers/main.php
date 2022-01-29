@@ -9,12 +9,15 @@ class Main extends Controller{
         $this ->view->render("main/index");
     }
     public function  getdb(){
-        echo "pepe";
         $db= $this->model->RetDb();
         echo json_encode($db);
-        // echo $db;
     }
-
+    public function Delete(){
+        if(isset(urlPath[2])){
+            $idDelete=urlPath[2];
+            $this->model->DeletEmployee($idDelete);
+        }
+    }
 }
 
 ?> 
