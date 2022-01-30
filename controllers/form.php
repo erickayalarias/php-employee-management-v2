@@ -1,26 +1,23 @@
 <?php 
 
 
-class Nuevo extends Controller{
+class Form extends Controller{
     function __construct(){
         parent::__construct();
     }
     function render(){
-        $this ->view->render("nuevo/index");
+        $this ->view->render("Form/index");
     }
     public function add(){
-    //    echo "alumno creado";
-    // echo urlPath[2];
-    if(!isset(urlPath[2])){
-        echo "pepe";
+    if($_SERVER["REQUEST_METHOD"] == "POST" && !isset(urlPath[2])){
+        $infoEmail= $this -> model -> checkEmail($_POST);
+        if(isset($infoEmail)){
+           echo $infoEmail["id"];
+        }else{
+            $this->model->insert($_POST);
+            echo 100000;
+        }
     }
-    //   if($this->model->insert($_POST)){
-    //      $mensaje="nuevo Alumno creado";
-    //      echo "entro aqui";
-    //   }else{
-    //       $mensaje="Estos datos ya estan repetidos";
-    //       echo "entro en el else";
-    //   };
     }
 
     public function checked(){
@@ -39,13 +36,8 @@ class Nuevo extends Controller{
     }
     public function data(){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            echo "pepe";
+            $this ->model -> updateEmployee($_POST, urlPath[2] );
         }
-        // print_r($_POST);
-        // print_r($_REQUEST);
-        // var_dump($_REQUEST);
-        // $_SERVER;
-        // print_r($_SERVER);
     }
 }
 

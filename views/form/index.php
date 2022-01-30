@@ -21,9 +21,9 @@
     <div class="form">
         <form action=" <?php 
     if(isset($this->mensaje["id"])){
-       echo constant("URL")."nuevo/data/".$this->mensaje["id"];
+       echo constant("URL")."form/data/".$this->mensaje["id"];
     }else{
-        echo constant("URL")."nuevo/add";
+        echo constant("URL")."form/add";
     }
     ?>" method="POST">
         <div class="row">

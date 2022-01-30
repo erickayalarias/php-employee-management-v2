@@ -1,5 +1,8 @@
+// const { data } = require("jquery")
+
 data= window.location.href
 console.log(data)
+
 // $.ajax({
 //     type: "POST",
 //     url: `${data}/getdb`,
@@ -21,7 +24,7 @@ console.log(data)
 //         // dataEmployee = JSON.parse(data);
 //     }
 // })
-registerView= data.replace("main", "nuevo")
+registerView= data.replace("dashboard", "form")
 // console.log(registerView)
 // console.log(window.location)
 
@@ -94,16 +97,16 @@ async function callGrid() {
         ],
         //todo event listener to update from inline table
         onItemUpdated: function (args) {
-            //console.log(args.item);
-            $.ajax({
-                type: "POST",
-                url: ".././src/library/employeeController.php?modifyEmployee",
-                data: args.item,
-                success: function (data) {
-                    console.log(data)
-                    alert(`The user has been Updated`);
-                }
-            })
+            console.log(args.item)
+            // $.ajax({
+            //     type: "POST",
+            //     url: `${registerView}/data/${args.item[0]}`,
+            //     data:args.item,
+            //     success: function (data){
+            //         console.log(data)
+            //     //    alert("The user has been deleted");
+            //     }
+            // });
 
         },
         onItemDeleted: function(args) {
@@ -121,13 +124,11 @@ async function callGrid() {
         //todo this need to be active to works double click
         rowClick: function (args) {
         },
-
         //todo event listener to redirect to employee.php with id and charge all data in the form
         rowDoubleClick: function (args) {
             $idget = args["item"].id
             window.location.assign(`${registerView}/checked/${$idget}`)
         },
-       
         onItemInserting: function(args) {
             emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             if (!emailRegex.test(args.item.email)) {
@@ -145,43 +146,77 @@ async function callGrid() {
 
         //todo event listener to after validations insert the employee in employee.json
         onItemInserted: function (args) {
-            $.ajax({
-                type: "POST",
-                url: ".././src/library/employeeController.php?addEmployee",
-                data: args.item,
-                success: function (data) {
-                    // callGrid();
-                }
-            })
+            console.log(args)
+            // $.ajax({
+            //     type: "POST",
+            //     url: ".././src/library/employeeController.php?addEmployee",
+            //     data: args.item,
+            //     success: function (data) {
+            //         // callGrid();
+            //     }
+            // })
         }
     });
 
 };
 
-rr=document.getElementsByClassName("p")
-console.log($("form").serializeArray())
-metiendodatos= $("form").serializeArray()
 
+//form submit
 $( "form" ).on( "submit", function( event ) {
     event.preventDefault();
     //  form= $(this).serializeArray();
      form= $(this).serializeArray();
      // data.includes("checked")
      if(data.includes("checked")){
-         console.log("pepe")
+        //  console.log(form)
         nuevaUrl= data.replace("checked", "data")
          $.ajax({
              type: "POST",
              url: `${nuevaUrl}`,
              data: form,
              success: function (data) {
-                 console.log(data)
-             //    alert("The user has been deleted");
+                 swal({
+                    title: "User  Updated!",
+                    icon: "success",
+                  });
              }
          });
      }else{
-         console.log("archivonuevo")
-
+        routeAdd=`${data}/add`
+        form= $(this).serializeArray();
+         $.ajax({
+            type: "POST",
+            url: `${routeAdd}`,
+            data: form,
+            success: function (data) {
+                datos = data
+                if(datos == 100000){
+                    swal({
+                        title: "User Added",
+                        icon: "success",
+                      });
+                }else{
+                    id=data;
+                    swal({
+                                title: "This email already exist in the Database!",
+                                text: "Would you like to go to the user?",
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                              })
+                              .then((user) => {
+                                if (user) {
+                                    url= window.location.href
+                                    newUrl=`${url}/checked/${id}`
+                                    window.location.assign(newUrl)
+                                    console.log(window.location.href)
+                                } else {
+                                  swal("Change email");
+                                }
+                              });
+                }
+            }
+        });
      }
     
   });

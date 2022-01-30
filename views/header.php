@@ -22,17 +22,36 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- JS -->
     <script src="<?php echo constant("URL");?>node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="<?php echo constant("URL");?>public/assets/js/main.js" defer></script>
 </head>
 <body>
-    <div id="header">
-    <ul>
-        <li><a href=" <?php echo constant("URL");?>main">Inicio</a></li>
-        <li><a href="<?php echo constant("URL");?>nuevo">Nuevo</a></li>
-        <li><a href=" <?php echo constant("URL");?>consulta">Consulta</a></li>
-        <li><a href="<?php echo constant("URL");?>ayuda">Ayuda</a></li>
-    </ul>
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> <b>PHP - Employee - Management</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a id='nav-dashboard' class="nav-link" href=" <?php echo constant("URL");?>dashboard" aria-current="page">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a id='nav-employee' class="nav-link" href="<?php echo constant("URL");?>form">Employee</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+        <a href='<?php
+ $urlhead= constant("URL")."login/Logout";
+ echo $urlhead;
+  ?> ' class="btn btn-outline-success">Logout</a>
+        </form>
+      </div>
     </div>
+  </nav>
+</header>
 </body>
 </html>

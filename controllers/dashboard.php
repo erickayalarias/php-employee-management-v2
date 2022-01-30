@@ -1,12 +1,12 @@
 <?php 
 
 
-class Main extends Controller{
+class Dashboard extends Controller{
     function __construct(){
         parent::__construct();
     }
     function render(){
-        $this ->view->render("main/index");
+        $this ->view->render("dashboard/index");
     }
     public function  getdb(){
         $db= $this->model->RetDb();
@@ -16,6 +16,13 @@ class Main extends Controller{
         if(isset(urlPath[2])){
             $idDelete=urlPath[2];
             $this->model->DeletEmployee($idDelete);
+        }
+    }
+    public function pepe(){
+        if(isset(urlPath[2])){
+            $id=urlPath[2];
+            echo $id;
+            // $this->model->DeletEmployee($idDelete);
         }
     }
 }

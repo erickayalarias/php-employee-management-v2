@@ -10,10 +10,10 @@ class App{
         //cuando se ingresa sin definir controlador
         if(empty($url[0])){
             // Hacer un if si ha iniciado sesion tambien
-            $archivoController ="controllers/main.php";
+            $archivoController ="controllers/dashboard.php";
             require_once $archivoController;
-            $controller = new Main();
-            $controller -> loadModel("main");
+            $controller = new dashboard();
+            $controller -> loadModel("dashboard");
             $controller ->render();
             return false;
         }

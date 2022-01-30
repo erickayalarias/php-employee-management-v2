@@ -52,6 +52,11 @@ INSERT INTO employees (name, lastName, email, gender, city, streetAddress, state
 ('John', 'Doe', 'jhohndoe@foo.com', 'man', 'New York', 89, 'WA', 34, 9889, 1283645645),
 ('Leila', 'Mills', 'mills@leila.com', 'woman', 'San Diego', 29, 'CA', 29, 98765, 2147483647),
 ('Susan', 'Smith', 'susanmith@baz.com', 'woman', 'Louisville', 28, 'KNT', 43, 445321, 2147483647),
-('Neil', 'Walker', 'walkerneil @baz.com', 'man', 'Nashville', 42, 'TN', 23, 90143, 2147483647)
+('Neil', 'Walker', 'walkerneil@baz.com', 'man', 'Nashville', 42, 'TN', 23, 90143, 2147483647)
 ;
+
+
+
+
+
 
