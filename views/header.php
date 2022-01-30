@@ -30,14 +30,14 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"> <b>PHP - Employee - Management</b></a>
+      <a class="navbar-brand" href="<?php echo constant("URL");?>dashboard"> <b>PHP - Employee - Management</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a id='nav-dashboard' class="nav-link" href=" <?php echo constant("URL");?>dashboard" aria-current="page">Dashboard</a>
+            <a id='nav-dashboard' class="nav-link" href="<?php echo constant("URL");?>dashboard" aria-current="page">Dashboard</a>
           </li>
           <li class="nav-item">
             <a id='nav-employee' class="nav-link" href="<?php echo constant("URL");?>form">Employee</a>

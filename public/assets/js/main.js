@@ -38,8 +38,7 @@ async function callGrid() {
         paging: true,
         pageSize: 20,
         pageButtonCount: 5,
-        confirmDeleting: true,
-        deleteConfirm: 'Do you really Want DELETE THIS DATA? ',
+        confirmDeleting: false,
 
         //todo Load data from employees.json
         data: await callDataEmploee(),
@@ -82,23 +81,41 @@ async function callGrid() {
                     swal({
                         title: "User Updated",
                         icon: "success",
-                      });
+                    });
                 }
             });
-
+            
         },
-        onItemDeleted: function(args) {
-            console.log(args.item[0])
-            $.ajax({
-                type: "DELETE",
-                url: `${data}/Delete/${args.item[0]}`,
-                success: function (data) {
-                   alert("The user has been deleted");
-                   
+        onItemDeleting: function (args){
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this employee",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  swal("Employee deleted!", {
+                    icon: "success",
+                  });
+                  $.ajax({
+                            type: "DELETE",
+                            url: `${data}/Delete/${args.item[0]}`,
+                            success: function (data) {
+                                swal({
+                                    title: "Employee Deleted",
+                                    icon: "success",
+                                });
+                            }
+                        });
+                } else {
+                    swal("Employee not deleted!");
+                    args.cancel= true;
+                    callGrid()
                 }
-            });
-        }
-        ,
+              });
+        },
 
         //todo this need to be active to works double click
         rowClick: function (args) {
@@ -112,13 +129,19 @@ async function callGrid() {
             emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             if (!emailRegex.test(args.item.email)) {
                 args.cancel = true;
-                alert(`The email: ${args.item.email} is incorrect`);
+                swal({
+                    title: "Email incorrect",
+                    icon: "warning",
+                });
             }
 
             dataEmployee.forEach(element => {
                 if(element.email == args.item.email){ 
                     args.cancel = true;
-                    alert("Email already in the database");
+                    swal({
+                        title: "Email already in the database",
+                        icon: "warning",
+                    });
                 }
             });
         },
@@ -128,9 +151,13 @@ async function callGrid() {
             route= window.location.href
             $.ajax({
                 type: "POST",
-                url: `${route}/pepe`,
+                url: `${route}/nep`,
                 data: args.item,
                 success: function (data) {
+                    swal({
+                        title: "Employee Added",
+                        icon: "success",
+                    });
                     callGrid();
                     // console.log(data)
                 }
@@ -179,7 +206,7 @@ $( "form" ).on( "submit", function( event ) {
                     id=data;
                     swal({
                                 title: "This email already exist in the Database!",
-                                text: "Would you like to go to the user?",
+                                text: "Would you like to go to the employee?",
                                 icon: "warning",
                                 buttons: true,
                                 dangerMode: true,
@@ -200,3 +227,25 @@ $( "form" ).on( "submit", function( event ) {
      }
     
   });
+
+
+  function type(n, t) {
+     var str = document.getElementsByTagName("code")[n].innerHTML.toString();
+     var i = 0;
+    document.getElementsByTagName("code")[n].innerHTML = "";
+    setTimeout(function() {
+        var se = setInterval(function() {
+            i++;
+            document.getElementsByTagName("code")[n].innerHTML =
+                str.slice(0, i) + "|";
+            if (i == str.length) {
+                clearInterval(se);
+                document.getElementsByTagName("code")[n].innerHTML = str;
+            }
+        }, 10);
+    }, t);
+}
+
+type(0, 0);
+type(1, 600);
+type(2, 1300);

@@ -26,10 +26,6 @@
         <!-- todo main section  -->
         <div id="jsGrid"> </div>
     </section>
-<a href='<?php
- $urlhead= constant("URL")."login/Logout";
- echo $urlhead;
-  ?> ' class="btn btn-outline-success">Logout</a>
     <?php 
     require "views/footer.php";
     ?>

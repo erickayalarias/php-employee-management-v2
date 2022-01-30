@@ -7,7 +7,6 @@ class App{
         $url = rtrim($url, "/");
         $url= explode("/", $url);
         define("urlPath", $url);
-        //cuando se ingresa sin definir controlador
         if(empty($url[0])){
             // Hacer un if si ha iniciado sesion tambien
             $archivoController ="controllers/dashboard.php";

@@ -18,7 +18,7 @@ class Dashboard extends Controller{
             $this->model->DeletEmployee($idDelete);
         }
     }
-    public function pepe(){
+    public function nep(){
         $this -> model -> addEmployee($_POST);
    
     }

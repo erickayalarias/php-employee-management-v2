@@ -57,7 +57,7 @@
             <div class="col-md-6 mt-md-0 mt-3"> <label>Phone Number</label> <input type="tel" class="form-control"  name="phoneNumber" required value="<?= isset($this->mensaje["phoneNumber"]) ?  $this->mensaje["phoneNumber"] : '' ?> "> </div>
         </div>
         <!-- <div class="btn btn-primary mt-3" type="submit" name="submitForm">Submit</div> -->
-        <button class="col-5 dflex btn btn-primary btn-lg" type="submit" name="submitForm"> Submit </button>
+        <button class="col-12 dflex btn btn-primary btn-lg" type="submit" name="submitForm"> Submit </button>
         <!-- <button id="boton"></button> -->
     </div>
 </div>
