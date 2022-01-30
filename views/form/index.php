@@ -36,14 +36,14 @@
             <?php
             if(isset($this->mensaje["gender"])){
               if($this->mensaje["gender"] == "man"){
-                    echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='radio' value='man' checked>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='radio' value='woman'>Female <span class='checkmark'></span> </label> </div>";
+                    echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='gender' value='man' checked>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='gender' value='woman'>Female <span class='checkmark'></span> </label> </div>";
               } else if($this->mensaje["gender"] == "woman"){
-                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='radio' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='radio' value='woman' checked>Female <span class='checkmark'></span> </label> </div>";
+                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='gender' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='gender' value='woman' checked>Female <span class='checkmark'></span> </label> </div>";
               }else{
-                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='radio' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='radio' value='woman' >Female <span class='checkmark'></span> </label> </div>";
+                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='gender' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='gender' value='woman' >Female <span class='checkmark'></span> </label> </div>";
               }
             }else{
-                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='radio' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='radio' value='woman' >Female <span class='checkmark'></span> </label> </div>";
+                echo "<div class='d-flex align-items-center mt-2'> <label class='option'> <input type='radio' name='gender' value='man'>Male <span class='checkmark'></span> </label> <label class='option ms-4'> <input type='radio' name='gender' value='woman' >Female <span class='checkmark'></span> </label> </div>";
             }
             ?>
             </div>

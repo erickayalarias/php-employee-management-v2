@@ -1,32 +1,9 @@
-// const { data } = require("jquery")
+
 
 data= window.location.href
 console.log(data)
 
-// $.ajax({
-//     type: "POST",
-//     url: `${data}/getdb`,
-//     success: function (data) {
-//         dataEmployee = JSON.parse(data);
-//     }
-// })
-// console.log("pepe")
-// console.log(window.location.pathname)
-// console.log(window.location.host )
-// console.log(window.location.hostname)
-// reading= await $.ajax({
-//     type: "POST",
-//     url: `${data}/getdata`,
-//     success: function (data) {
-//         console.log(data)
-//         let datsa=data 
-//         return datsa
-//         // dataEmployee = JSON.parse(data);
-//     }
-// })
 registerView= data.replace("dashboard", "form")
-// console.log(registerView)
-// console.log(window.location)
 
 
 
@@ -97,16 +74,17 @@ async function callGrid() {
         ],
         //todo event listener to update from inline table
         onItemUpdated: function (args) {
-            console.log(args.item)
-            // $.ajax({
-            //     type: "POST",
-            //     url: `${registerView}/data/${args.item[0]}`,
-            //     data:args.item,
-            //     success: function (data){
-            //         console.log(data)
-            //     //    alert("The user has been deleted");
-            //     }
-            // });
+            $.ajax({
+                type: "POST",
+                url: `${registerView}/data/${args.item[0]}`,
+                data:args.item,
+                success: function (data){
+                    swal({
+                        title: "User Updated",
+                        icon: "success",
+                      });
+                }
+            });
 
         },
         onItemDeleted: function(args) {
@@ -116,6 +94,7 @@ async function callGrid() {
                 url: `${data}/Delete/${args.item[0]}`,
                 success: function (data) {
                    alert("The user has been deleted");
+                   
                 }
             });
         }
@@ -146,15 +125,16 @@ async function callGrid() {
 
         //todo event listener to after validations insert the employee in employee.json
         onItemInserted: function (args) {
-            console.log(args)
-            // $.ajax({
-            //     type: "POST",
-            //     url: ".././src/library/employeeController.php?addEmployee",
-            //     data: args.item,
-            //     success: function (data) {
-            //         // callGrid();
-            //     }
-            // })
+            route= window.location.href
+            $.ajax({
+                type: "POST",
+                url: `${route}/pepe`,
+                data: args.item,
+                success: function (data) {
+                    callGrid();
+                    // console.log(data)
+                }
+            })
         }
     });
 

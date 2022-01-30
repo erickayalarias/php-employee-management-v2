@@ -12,7 +12,7 @@ class formModel extends Model{
             $name=$datos["name"];
             $lastName=$datos["lastName"];
             $email=$datos["email"];
-            $gender=$datos["radio"];
+            $gender=$datos["gender"];
             $city=$datos["city"];
             $streetAddress=$datos["streetAddress"];
             $state=$datos["state"];
@@ -50,7 +50,7 @@ class formModel extends Model{
             $name=$formU["name"];
             $lastName=$formU["lastName"];
             $email=$formU["email"];
-            $gender=$formU["radio"];
+            $gender=$formU["gender"];
             $city=$formU["city"];
             $streetAddress=$formU["streetAddress"];
             $state=$formU["state"];

@@ -19,11 +19,8 @@ class Dashboard extends Controller{
         }
     }
     public function pepe(){
-        if(isset(urlPath[2])){
-            $id=urlPath[2];
-            echo $id;
-            // $this->model->DeletEmployee($idDelete);
-        }
+        $this -> model -> addEmployee($_POST);
+   
     }
 }
 
