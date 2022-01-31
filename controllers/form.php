@@ -31,7 +31,7 @@ class Form extends Controller{
         }
     }
     public function updated(){
-        echo "pepe";
+        // echo "pepe";
         echo $_POST;
     }
     public function data(){

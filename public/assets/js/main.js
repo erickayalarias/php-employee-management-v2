@@ -1,11 +1,85 @@
 
 
 data= window.location.href
-console.log(data)
-
 registerView= data.replace("dashboard", "form")
 
+//Data url where i redirect
 
+datatoshowtime =window.location.href
+
+if(datatoshowtime.includes("dashboard")){
+    url=datatoshowtime.replace("dashboard", "login")
+    console.log(url)
+    setInterval(() => {
+    $.ajax({
+        type: "POST",
+        url: `${datatoshowtime}/checkTime`,
+        success: function (data) {
+            if(data.includes("localhost")){
+                swal({
+                    title: "Session expired",
+                    icon: "warning",
+                    buttons: false,
+                    dangerMode: true,
+                  })
+                setTimeout(() => {
+                    window.location.assign(`${data}`)
+                }, 2000);
+               
+            }
+        }
+    })
+}, 1000);
+}else if(datatoshowtime.includes("form") && datatoshowtime.includes("checked")){
+    cambiadata=datatoshowtime.replace("form", "dashboard")
+    cammbiadata=cambiadata.replace("checked", "checkTime")
+    setInterval(() => {
+    $.ajax({
+        type: "POST",
+        url: `${cammbiadata}`,
+        success: function (data) {
+            if(data.includes("localhost")){
+                swal({
+                    title: "Session expired",
+                    icon: "warning",
+                    buttons: false,
+                    dangerMode: true,
+                  })
+                setTimeout(() => {
+                    window.location.assign(`${data}`)
+                }, 2000);
+               
+            }
+        }
+    })
+}, 1000);
+    // console.log(cambiadata)
+}else if(datatoshowtime.includes("form")){
+    newData=datatoshowtime.replace("form", "dashboard")
+    setInterval(() => {
+    $.ajax({
+
+        type: "POST",
+        url: `${newData}/checkTime`,
+        success: function (data) {
+            if(data.includes("localhost")){
+                swal({
+                    title: "Session expired",
+                    icon: "warning",
+                    buttons: false,
+                    dangerMode: true,
+                  })
+                setTimeout(() => {
+                    window.location.assign(`${data}`)
+                }, 2000);
+               
+            }
+        }
+    })
+}, 1000);
+}
+
+//Jsgrid 
 
 async function callDataEmploee() {
     let result = []
@@ -79,7 +153,7 @@ async function callGrid() {
                 data:args.item,
                 success: function (data){
                     swal({
-                        title: "User Updated",
+                        title: "Employee Updated",
                         icon: "success",
                     });
                 }

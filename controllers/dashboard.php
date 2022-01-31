@@ -22,6 +22,13 @@ class Dashboard extends Controller{
         $this -> model -> addEmployee($_POST);
    
     }
+    public function checkTime(){
+        session_start();
+        if(isset($_SESSION['LAST_ACTIVITY']) && time() - $_SESSION['LAST_ACTIVITY'] > 600){
+            $urlheada= constant("URL")."login/Logout";
+            echo $urlheada;
+        }
+    }
 }
 
 ?> 

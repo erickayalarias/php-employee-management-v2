@@ -21,6 +21,7 @@ class Login extends Controller{
                         session_start();
                         $_SESSION["email"] = $postEmail;
                         $_SESSION["password"] = $postPassword;
+                        $_SESSION['LAST_ACTIVITY'] = time();
                         $urlhead= constant("URL")."dashboard";
                         header("Location: $urlhead");
                     }
