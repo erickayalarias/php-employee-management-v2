@@ -5,6 +5,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-2.0-blue.svg?cacheSeconds=2592000" />
 </p>
+# please use npm install and change the define url in config file in case this doesnt work 
 
 > This project provides an easy-to-use interface to manage employees information. The application user case starts with an user log in, and allows the user to read, create, delete and update the employee´s information. The user and employee data is stored in a database.
 
@@ -65,15 +66,3 @@ To download or install this project in your local computer, either clone the rep
 ```sh
 This project could be used to manage employee information.
 ```
-
-## Based on
-
-This repository is based on a past delivery from master's students:
-
-👤 **Víctor Martínez**
-
-👤 **Ismael Vázquez**
-
----
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
