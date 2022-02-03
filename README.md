@@ -5,7 +5,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-2.0-blue.svg?cacheSeconds=2592000" />
 </p>
-# please use npm install and change the define url to the current url of the folder in config file in case this doesnt work, you will need the DB filein your Database, you only need to copy the info and paste in to the database.
+# please use npm install and change the define url to the current url of the folder in config file in case this doesnt work, you will need the DB file in your Database, you only need to copy the info and paste in to the database.
 
 > This project provides an easy-to-use interface to manage employees information. The application user case starts with an user log in, and allows the user to read, create, delete and update the employee´s information. The user and employee data is stored in a database.
 
