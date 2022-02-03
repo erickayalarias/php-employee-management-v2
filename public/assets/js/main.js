@@ -113,7 +113,6 @@ async function callGrid() {
         pageSize: 20,
         pageButtonCount: 5,
         confirmDeleting: false,
-
         //todo Load data from employees.json
         data: await callDataEmploee(),
 
